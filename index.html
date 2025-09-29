@@ -53,7 +53,7 @@
 <div class="cat-container" id="catContainer"></div>
 
 <script>
-    // List of cats
+    // List of cats (updated for PNG images)
     const cats = [
         {img: "images/cat1.png", audio: "audio/meow1.mp3", name: "Meow 1"},
         {img: "images/cat2.png", audio: "audio/meow2.mp3", name: "Meow 2"},
@@ -71,7 +71,7 @@
 
         // Image
         const img = document.createElement("img");
-        img.src = cat.img; // simple path, no cache-busting
+        img.src = cat.img; // PNG paths
         img.alt = cat.name;
 
         // Name
