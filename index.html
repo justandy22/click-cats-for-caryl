@@ -71,7 +71,7 @@
 
         // Image
         const img = document.createElement("img");
-        img.src = cat.img;
+        img.src = cat.img + "?v=1"; // cache-busting
         img.alt = cat.name;
 
         // Name
