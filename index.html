@@ -55,35 +55,42 @@
 <script>
     // List of cats
     const cats = [
-        {img: "images/cat1.jpg", audio: "audio/meow1.mp3", name: "Meow 1"},
-        {img: "images/cat2.jpg", audio: "audio/meow2.mp3", name: "Meow 2"},
-        {img: "images/cat3.jpg", audio: "audio/meow3.mp3", name: "Meow 3"}
+        {img: "images/cat1.png", audio: "audio/meow1.mp3", name: "Meow 1"},
+        {img: "images/cat2.png", audio: "audio/meow2.mp3", name: "Meow 2"},
+        {img: "images/cat3.png", audio: "audio/meow3.mp3", name: "Meow 3"}
         // Add more cats here as needed
     ];
 
     const container = document.getElementById("catContainer");
 
-   cats.forEach((cat, index) => {
-    const card = document.createElement("div");
-    card.className = "cat-card";
-    card.onclick = () => playMeow(index);
+    cats.forEach((cat, index) => {
+        // Create card
+        const card = document.createElement("div");
+        card.className = "cat-card";
+        card.onclick = () => playMeow(index);
 
-    const img = document.createElement("img");
-    img.src = cat.img + "?v=" + new Date().getTime(); // dynamic cache-busting
-    img.alt = cat.name;
+        // Image
+        const img = document.createElement("img");
+        img.src = cat.img; // simple path, no cache-busting
+        img.alt = cat.name;
 
-    const p = document.createElement("p");
-    p.textContent = cat.name;
+        // Name
+        const p = document.createElement("p");
+        p.textContent = cat.name;
 
-    card.appendChild(img);
-    card.appendChild(p);
-    container.appendChild(card);
+        // Append to card
+        card.appendChild(img);
+        card.appendChild(p);
 
-    const audio = document.createElement("audio");
-    audio.id = "meow" + index;
-    audio.src = cat.audio;
-    document.body.appendChild(audio);
-});
+        // Append to container
+        container.appendChild(card);
+
+        // Create audio element
+        const audio = document.createElement("audio");
+        audio.id = "meow" + index;
+        audio.src = cat.audio;
+        document.body.appendChild(audio);
+    });
 
     function playMeow(index) {
         const audio = document.getElementById("meow" + index);
