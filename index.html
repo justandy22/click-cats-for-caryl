@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click Cats for Caryl</title>
+<style>
+  body {
+    text-align: center;
+    font-family: sans-serif;
+    background-color: #fff0f5;
+  }
+  h1 {
+    color: #ff69b4;
+  }
+  .cat {
+    width: 150px;
+    margin: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .cat:hover {
+    transform: scale(1.2);
+  }
+  @keyframes bounce {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.3); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  .bounce {
+    animation: bounce 0.4s;
+  }
+</style>
+</head>
+<body>
+
+<h1>Click the Cats to Hear Meow!</h1>
+
+<!-- Replace these filenames with your uploaded files -->
+<img src="cat1.png" class="cat" data-sound="meow1.mp3" alt="Cat 1">
+<img src="cat2.png" class="cat" data-sound="meow2.mp3" alt="Cat 2">
+<img src="cat3.png" class="cat" data-sound="meow3.mp3" alt="Cat 3">
+
+<script>
+  const cats = document.querySelectorAll('.cat');
+  cats.forEach(cat => {
+    cat.addEventListener('click', () => {
+      // Play the cat's sound
+      const sound = new Audio(cat.dataset.sound);
+      sound.play();
+
+      // Add bounce animation
+      cat.classList.add('bounce');
+      setTimeout(() => cat.classList.remove('bounce'), 400);
+    });
+  });
+</script>
+
+</body>
+</html>
