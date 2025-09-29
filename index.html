@@ -63,34 +63,28 @@
 
     const container = document.getElementById("catContainer");
 
-    cats.forEach((cat, index) => {
-        // Create card
-        const card = document.createElement("div");
-        card.className = "cat-card";
-        card.onclick = () => playMeow(index);
+   cats.forEach((cat, index) => {
+    const card = document.createElement("div");
+    card.className = "cat-card";
+    card.onclick = () => playMeow(index);
 
-        // Image
-        const img = document.createElement("img");
-        img.src = cat.img + "?v=1"; // cache-busting
-        img.alt = cat.name;
+    const img = document.createElement("img");
+    img.src = cat.img + "?v=1"; // <-- added cache-busting
+    img.alt = cat.name;
 
-        // Name
-        const p = document.createElement("p");
-        p.textContent = cat.name;
+    const p = document.createElement("p");
+    p.textContent = cat.name;
 
-        // Append to card
-        card.appendChild(img);
-        card.appendChild(p);
+    card.appendChild(img);
+    card.appendChild(p);
+    container.appendChild(card);
 
-        // Append to container
-        container.appendChild(card);
+    const audio = document.createElement("audio");
+    audio.id = "meow" + index;
+    audio.src = cat.audio;
+    document.body.appendChild(audio);
+});
 
-        // Create audio element
-        const audio = document.createElement("audio");
-        audio.id = "meow" + index;
-        audio.src = cat.audio;
-        document.body.appendChild(audio);
-    });
 
     function playMeow(index) {
         const audio = document.getElementById("meow" + index);
