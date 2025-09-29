@@ -69,7 +69,7 @@
     card.onclick = () => playMeow(index);
 
     const img = document.createElement("img");
-    img.src = cat.img + "?v=1"; // <-- added cache-busting
+    img.src = cat.img + "?v=" + new Date().getTime(); // dynamic cache-busting
     img.alt = cat.name;
 
     const p = document.createElement("p");
@@ -84,7 +84,6 @@
     audio.src = cat.audio;
     document.body.appendChild(audio);
 });
-
 
     function playMeow(index) {
         const audio = document.getElementById("meow" + index);
